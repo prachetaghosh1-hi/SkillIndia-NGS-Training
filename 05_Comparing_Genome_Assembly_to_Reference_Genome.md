@@ -21,7 +21,7 @@ sudo apt install unzip
 mamba activate ncbidatasets_sudo</pre>
 
 ***Step 2: Identify Reference Genome***
-Search Acinetobacter baumannii under “Genomes” in NCBI. Select the reference genome (green tick) and note the accession number (GCF_…).
+Search Pseudomonas aeruginosa under “Genomes” in NCBI. Select the reference genome (green tick) and note the accession number (GCF_…).
 Set Up Reference Directory
 
 <pre>mkdir ref
