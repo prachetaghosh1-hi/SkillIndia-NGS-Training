@@ -56,7 +56,8 @@ After installation, the commands were practiced directly in Ubuntu.
 
 
 ✅ **Safe usage examples:**  
-```bash
+
+
 # Remove a single file
 rm filename
 
@@ -82,10 +83,9 @@ After typing part of a directory or file name, press Tab to auto-complete it.
 Example: typing `cd Int` + pressing Tab completes to
 `cd Introduction_to_Unix_Shell_practice`
 
-🔹 Using Help and Flags
+## 🔹 Using Help and Flags
 Flags modify how commands behave.
 
-```bash
 ls -a     # show hidden files
 ls -t     # sort by time modified
 ls -lh    # list in human-readable format with permissions
