@@ -24,8 +24,6 @@ This file demonstrates how to:
 <pre> mamba activate sra_tools_fastqc_multiqc</pre>
 <pre> mamba install -c bioconda sra-tools fastqc multiqc</pre>
 
----
-
 **Step 2: Make a new directory for the organism**
 
 <pre>mkdir pseudomonas</pre>
@@ -91,6 +89,8 @@ The report (multiqc_report.html) will be saved in the pseudomonas directory.
 Raw FASTQ files: `rawdata_pa/`
 FastQC reports: `QC_pa/`
 MultiQC report: `pseudomonas/multiqc_report.html`
+
+---
 
 
 
