@@ -1,4 +1,4 @@
-# *Antimicrobial Resistance (AMR) Analysis with NCBI AMRFinderPlus*
+# Antimicrobial Resistance (AMR) Analysis with NCBI AMRFinderPlus
 
 *Objective:
 Identify antimicrobial resistance (AMR) genes in scaffolded genome sequences using AMRFinderPlus.*
@@ -24,7 +24,7 @@ mamba install -c bioconda ncbi-amrfinderplus -y</pre>
 
 ***Step 4: Nucleotide-based AMR search***
 
-<pre>amrfinder --nucleotide e.coli/ragtag_output/ragtag.scaffold.fasta --organism Pseudomonas_aeruginosa --output amr.txt  --threads 4</pre>
+<pre>amrfinder --nucleotide pseudomonas/ragtag_output/ragtag.scaffold.fasta --organism Pseudomonas_aeruginosa --output amr.txt  --threads 4</pre>
 
 
 ***Step 5: View results:***
