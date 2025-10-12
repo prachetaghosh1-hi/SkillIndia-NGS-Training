@@ -86,7 +86,7 @@ Aggregate all FastQC results into a single report:
 
 The report (multiqc_report.html) will be saved in the pseudomonas directory.
 
-#Outputs
+# Outputs
 
 Raw FASTQ files: `rawdata_pa/`
 FastQC reports: `QC_pa/`
