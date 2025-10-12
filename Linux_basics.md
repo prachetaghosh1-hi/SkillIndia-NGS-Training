@@ -47,7 +47,7 @@ After installation, the commands were practiced directly in Ubuntu.
 | `pwd` | Print the current working directory |
 | `realpath` | Print the full resolved path |
 
----
+
 
 ### ⚠️ Important Note on `rm -r`
 - The command `rm -r` means **remove recursively** — it deletes a folder and everything inside it (subfolders and files).  
@@ -55,17 +55,17 @@ After installation, the commands were practiced directly in Ubuntu.
 - Always double-check before using it.  
 
 
-✅ **Safe usage examples:**  
+### Remove a single file
+<pre>rm filename</pre>
 
+### Remove a folder interactively (asks for confirmation)
+<pre>rm -ri foldername</pre>
 
-# Remove a single file
-rm filename
-
-# Remove a folder interactively (asks for confirmation)
-rm -ri foldername
+---
 
 ## ⚙️ 4️⃣  Special Tricks
-🔹 Navigating Directories
+### 🔹 Navigating Directories
+| command | action |
 |--------|------------|
 | `cd` | change directory (Always put a space after cd) |
 | `/` | represents the root directory |
@@ -78,29 +78,30 @@ rm -ri foldername
 
 Pressing Ctrl + Z stops the currently running command and brings you back to the user prompt.
 
-## 🔹 Tab Completion
+### 🔹 Tab Completion
 After typing part of a directory or file name, press Tab to auto-complete it.
 Example: typing `cd Int` + pressing Tab completes to
 `cd Introduction_to_Unix_Shell_practice`
 
-## 🔹 Using Help and Flags
+### 🔹 Using Help and Flags
 Flags modify how commands behave.
+| Flag | Purpose |
+|------|------|
+| `ls -a` | show hidden files |
+| `ls -t` | sort by time modified |
+| `ls -lh` | list in human-readable format with permissions |
+| `ls -lhtr` | detailed listing, sorted by time (reverse order)|
 
-ls -a     # show hidden files
-ls -t     # sort by time modified
-ls -lh    # list in human-readable format with permissions
-ls -lhtr  # detailed listing, sorted by time (reverse order)
-
-🔹 Creating and Managing Files/Folders
+### 🔹 Creating and Managing Files/Folders
 | Action | Command |
 |--------|----------|
 | Make a new directory | `mkdir newdirectory` | 
 | Move a file to a folder |	`mv file newfolder/` |
 | Copy a file to a folder |	`cp file newfolder/` |
 | Rename a file |	`mv oldname newname` |
- Copy and rename a file |	`cp oldname newname` |
+| Copy and rename a file |	`cp oldname newname` |
 
-🔹 Viewing Text Files
+### 🔹 Viewing Text Files
 | Action | Command |
 |---------|---------|
 | View full file |	`less filename` (press q to quit) |
@@ -108,15 +109,17 @@ ls -lhtr  # detailed listing, sorted by time (reverse order)
 | View last 10 lines |	`tail filename` |
 | View first N lines |	`head -n [N] filename` |
 | View last N lines |	`tail -n [N] filename` |
-| View a particular line |	`head -n [N] filename | tail -n 1` |
 
-🔹 Using cat and Redirection
-Purpose	Command
-Display file(s)	cat file1 file2
-Combine multiple files into a new file	cat file1 file2 > newfile
-Append to an existing file	cat file3 >> newfile
+View a particular line 	<pre>head -n [N] filename | tail -n 1 </pre>
 
-### ⚠️ Be careful:
+### 🔹 Using cat and Redirection
+| Purpose |	Command |
+|------|-----|
+| Display file(s)|	`cat file1 file2` |
+| Combine multiple files into a new file |	`cat file1 file2 > newfile` |
+| Append to an existing file |	`cat file3 >> newfile` |
+
+#### ⚠️ Be careful:
 
 Using `>` overwrites existing content.
 
@@ -124,27 +127,27 @@ Using `>>` adds content to the existing file.
 
 Empty files cannot be appended using `>>`.
 
-🔹 Using grep
+### 🔹 Using grep
 To print lines that contain a specific word or pattern:
 
-```bash
-grep ATOM filename.pdb
+<pre> grep ATOM filename.pdb</pre>
 This shows only those lines where “ATOM” appears.
 
-🔹 Editing Files Using nano
+### 🔹 Editing Files Using nano
 nano is a simple text editor used directly in the terminal.
 
 | Action | Command |
 | ------ | -------- |
 | Open or create a file |	`nano filename` |
 | Save changes |	Press Ctrl + O, then Enter |
-| Exit | nano	Press Ctrl + X |
+| Exit nano |	Press Ctrl + X |
 
 Example:
 
-```bash
-nano notes.txt
-This opens a text file called notes.txt. You can write, edit, then save and close it.
+<pre>nano notes.txt</pre>
+This opens a text file called `notes.txt` . You can write, edit, then save and close it.
+
+---
 
 ## 🌿 5️⃣ Environment Setup
 🔹 What Is an Environment?
@@ -155,6 +158,7 @@ This opens a text file called notes.txt. You can write, edit, then save and clos
 
 🔹 Commands for Managing Environments
 | Action | Command |
+|-----|------|
 | Create a new environment | `mamba create -n envname` |
 | Activate an environment |	`mamba activate envname` |
 | Deactivate the current environment |	`mamba deactivate` |
