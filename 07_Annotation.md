@@ -24,7 +24,7 @@ mamba install -c bioconda prokka -y </pre>
 Navigate to the directory containing ragtag.scaffold.fasta 
 Run Prokka with appropriate flags:
 
-<pre>prokka --cpus 2 --norrna ragtag_output/ragtag.scaffold.fasta --outdir prokka_annotation</pre>
+<pre>prokka --outdir annotation --prefix pseudo --addgenes --locustag PROKKA --cpus 2 --norrna --notrna ragtag_output/ragtag.scaffold.fasta </pre>
 
 
 ***Step 3: Inspect Annotation Output***
