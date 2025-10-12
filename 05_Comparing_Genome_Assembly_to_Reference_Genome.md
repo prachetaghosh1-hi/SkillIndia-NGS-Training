@@ -1,6 +1,6 @@
 # Comparing Genome Assembly to Reference Genome
 
-*Objective:Compare the genome assembly generated from Acinetobacter baumannii SRA file (SRR5227129) to the reference genome from NCBI using QUAST.*
+*Objective:Compare the genome assembly generated from Pesudomonas aeruginosa SRA file to the reference genome from NCBI using QUAST.*
 
 ---
 
