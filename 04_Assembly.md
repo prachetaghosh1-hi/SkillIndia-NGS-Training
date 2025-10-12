@@ -13,10 +13,12 @@ We use **SPAdes** for assembly, **QUAST** for evaluation, and **SeqKit** for seq
 ***Step1: Installation of SPAdes in new environment called `spades`***
 <pre>mamba create -n spades
 mamba activate spades
-mamba install -c bioconda spades -y</pre>
+mamba install -c bioconda spades -y
+mkdir spades
+</pre>
 
 ***Step 2: Genome Assembly using SPAdes***
-<pre>spades.py -1 trim_pa/SRR35114395_1_trimmed.fastq -2 trim_pa/SRR35114395_2_trimmed.fastq -o trim_pa/spades --threads 4 --memory 16 </pre>
+<pre>spades.py -1 trim_pa/SRR35114395_1_trimmed.fastq -2 trim_pa/SRR35114395_2_trimmed.fastq -o spades --threads 4 --memory 16 </pre>
 
 - Check total scaffolds:
 <pre>wc -l trim_pa/spades/scaffolds.fasta</pre>
@@ -42,20 +44,20 @@ Purpose: SeqKit allows exploration, filtering, and summarizing of assembled sequ
 *Example Commands*
 
 Get statistics of scaffolds:
-<pre>seqkit stats trim_pa/spades/scaffolds.fasta </pre>
+<pre>seqkit stats spades/scaffolds.fasta </pre>
 
 
 View the first 5 scaffolds:
-<pre>seqkit head -n 5 trim_pa/spades/scaffolds.fasta </pre>
+<pre>seqkit head -n 5 spades/scaffolds.fasta </pre>
 
 
 
 
 # *Outputs*
 
-1. Assembled scaffolds: `trim_pa/spades/scaffolds.fasta`
+1. Assembled scaffolds: `spades/scaffolds.fasta`
 
-2. Filtered scaffolds: `trim_pa/spades/scaffolds_filtered.fasta`
+2. Filtered scaffolds: `spades/scaffolds_filtered.fasta`
 
 3. QUAST evaluation results: `quast_output/` containing reports and scaffold files
 
