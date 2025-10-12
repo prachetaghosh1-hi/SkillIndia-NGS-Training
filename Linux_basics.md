@@ -63,9 +63,9 @@ rm filename
 # Remove a folder interactively (asks for confirmation)
 rm -ri foldername
 
-## ⚙️ 4️⃣ Special Tricks
+## ⚙️ 4️⃣  Special Tricks
 🔹 Navigating Directories
-| -------- | ------------ |
+|--------|------------|
 | `cd` | change directory (Always put a space after cd) |
 | `/` | represents the root directory |
 | `ls` | lists contents |
@@ -77,7 +77,7 @@ rm -ri foldername
 
 Pressing Ctrl + Z stops the currently running command and brings you back to the user prompt.
 
-🔹 Tab Completion
+## 🔹 Tab Completion
 After typing part of a directory or file name, press Tab to auto-complete it.
 Example: typing `cd Int` + pressing Tab completes to
 `cd Introduction_to_Unix_Shell_practice`
@@ -93,16 +93,16 @@ ls -lhtr  # detailed listing, sorted by time (reverse order)
 
 🔹 Creating and Managing Files/Folders
 | Action | Command |
-| -------- | ---------- |
-| Make a new directory | `mkdir` newdirectory | 
-| Move a file to a folder |	`mv` file newfolder/ |
-| Copy a file to a folder |	`cp` file newfolder/ |
-| Rename a file |	`mv` oldname newname |
- Copy and rename a file |	`cp` oldname newname |
+|--------|----------|
+| Make a new directory | `mkdir newdirectory` | 
+| Move a file to a folder |	`mv file newfolder/` |
+| Copy a file to a folder |	`cp file newfolder/` |
+| Rename a file |	`mv oldname newname` |
+ Copy and rename a file |	`cp oldname newname` |
 
 🔹 Viewing Text Files
 | Action | Command |
-| --------- | --------- |
+|---------|---------|
 | View full file |	`less filename` (press q to quit) |
 | View first 10 lines |	`head filename` |
 | View last 10 lines |	`tail filename` |
