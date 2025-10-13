@@ -20,10 +20,10 @@ mkdir spades
 </pre>
 
 ***Step 2: Genome Assembly using SPAdes***
-<pre>spades.py -1 trim_pa/SRR35114395_1_trimmed.fastq -2 trim_pa/SRR35114395_2_trimmed.fastq -o spades --threads 4 --memory 16 </pre>
+<pre>spades.py -1 trim_ab/SRR35227129_1_trimmed.fastq -2 trim_ab/SRR35227129_2_trimmed.fastq -o spades --threads 4 --memory 16 </pre>
 
 - Check total scaffolds:
-<pre>wc -l trim_pa/spades/scaffolds.fasta</pre>
+<pre>wc -l trim_ab/spades/scaffolds.fasta</pre>
 
 ***Step 3: Installation of QUAST and Run QUAST for Assembly Evaluation***
 
@@ -31,15 +31,15 @@ mkdir spades
 mamba activate quast
 mamba install -c bioconda quast -y</pre>
 
-<pre>quast trim_pa/spades/scaffolds.fasta -o quast_output</pre>
+<pre>quast trim_ab/spades/scaffolds.fasta -o quast_output</pre>
 
 
 *Output*: QUAST provides reports including metrics like total length, N50, GC content, and scaffold count, stored in `quast_output` directory.
 
 ***Step 4: Installation of Seqkit and Use of SeqKit for Sequence Analysis***
-<pre>mamba create -n seqkit_sudo 
-  mamba activate seqkit_sudo
-  mamba install -c bioconda seqkit sudo -y</pre>
+<pre>mamba create -n seqkit 
+  mamba activate seqkit
+  mamba install -c bioconda seqkit -y</pre>
 
 Purpose: SeqKit allows exploration, filtering, and summarizing of assembled sequences.
 
@@ -69,7 +69,7 @@ View the first 5 scaffolds:
 
 **LONG READS**
 
-I used *Mycobacterium tuberculosis* for sequencing. Its genome size was obtained from the NCBI database and used as a reference parameter during the assembly run. For long-read assembly, two tools are commonly used: `Flye` or `Canu`. I performed the assembly using `Canu`.
+I used *Mycobacterium tuberculosis* with SRR ID:  for sequencing. Its genome size was obtained from the NCBI database and used as a reference parameter during the assembly run. For long-read assembly, two tools are commonly used: `Flye` or `Canu`. I performed the assembly using `Canu`.
 
 <pre>mamba create -n canu
 mamba activate canu
