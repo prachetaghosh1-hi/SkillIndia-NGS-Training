@@ -40,7 +40,7 @@ unzip ncbi_dataset.zip</pre>
 
 Locate FASTA File
 Navigate through unzipped folders to locate .fna file. Copy it to the `ref` directory for easy access.
-<pre>cp -r GCF_009035845.fna ../../..</pre>
+<pre>cp -r GCF_009035845.1.fna ../../..</pre>
 
 ***Step 4 : Quast run***
 Activate QUAST Environment
