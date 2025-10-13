@@ -98,11 +98,11 @@ Locate and click the Krona output file (usually an .html file).
 The Krona interactive chart will open in your web browser, displaying a circular visualization of all identified taxa.
 
 
-*🧠 Tip:*
+### *🧠 Tip:*
 Hovering over each section of the Krona chart displays the name and relative abundance of each organism identified in the sample.
 
 
-*📊 Example Interpretation*
+### *📊 Example Interpretation*
 The Krona chart provides an intuitive way to explore classification results:
 
 The center represents the highest taxonomic level (e.g., Bacteria, Archaea, Eukaryota).
