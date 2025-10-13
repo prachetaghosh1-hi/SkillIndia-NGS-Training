@@ -36,5 +36,19 @@ During this training, I learned and practiced the **entire workflow of Next-Gene
 
 ---
 
+## Tools used for short and long reads:
+
+| Step                       | Short Reads Tools                  | Long Reads Tools                 | Tool Used |
+|-----------------------------|----------------------------------|--------------------------------|-----------|
+| Data Retrieval              | SRA Tools                         | SRA Tools                       | SRA Tools |
+| Quality Check (FASTQ)       | FastQC, MultiQC                   | NanoPlot                        | FastQC, MultiQC, NanoPlot |
+| Trimming                    | Trim Galore, Fastp                | Porechop                        | Fastp, Porechop |
+| Assembly                    | SPAdes                            | Canu, Flye                      | SPAdes, Canu |
+| Assembly Quality Check      | QUAST                             | QUAST                            | QUAST     |
+| Scaffolding                 | RagTag                            | Not required if using Flye       | RagTag    |
+| Annotation                  | Prokka                            | Prokka                           | Prokka    |
+
+---
+
 This repository serves as a **complete record of my practical learning** during the Skill India training at CSIR-IGIB.  
 
