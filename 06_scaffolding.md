@@ -20,7 +20,7 @@ mamba install -c bioconda ragtag -y </pre>
 
 ***Step 2: Prepare for Scaffolding***
 
-- Verify the paths of your reference .fna file and the contigs.fasta file.
+- Verify the paths of your reference GCF_009035845.1.fna file and the contigs.fasta file.
 - Run RagTag Scaffolding
 
 <pre>ragtag.py scaffold reference.fna contigs.fasta -o ragtag_output</pre>
