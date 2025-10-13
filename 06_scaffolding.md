@@ -5,7 +5,7 @@ Scaffold assembled contigs using a reference genome to generate longer, ordered 
 
 ---
 
-**Prerequisites:
+**Prerequisites:**
 1. Reference genome in .fna format
 
 2. Assembled contigs in contigs.fasta
