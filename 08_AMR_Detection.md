@@ -5,6 +5,14 @@ Identify antimicrobial resistance (AMR) genes in scaffolded genome sequences usi
 
 ---
 
+NOTE: We worked on multiple organisms for short reads, including *E. coli*, *Pseudomonas aeruginosa*, *Acinetobacter baumannii* and *Staphylococcus aureus*. For this part, we used *Pseudomonas aeruginosa* with SRA ID: SRR35514395 as the example organism.
+
+---
+
+*Prerequisites* : scaffolded file (ragtag.scaffold.fasta)
+
+---
+
 ***Step1: Create  AMRFinder environment and install AMRFinderPlus***
 
 <pre>mamba create -n amrfinder
@@ -37,7 +45,7 @@ mamba install -c bioconda ncbi-amrfinderplus -y</pre>
 
 ***Step 6: Protein-based AMR search***
 
-<pre> amrfinder --protein annotation/e.coli.faa --gff annotation/e.coli.gff --annotation_format prokka --organism Pseudomonas_aeruginosa --output amr_protein.txt --threads 10</pre>
+<pre> amrfinder --protein annotation/pseudomonas.faa --gff annotation/pseudomonas.gff --annotation_format prokka --organism Pseudomonas_aeruginosa --output amr_protein.txt --threads 10</pre>
 
 
 ***step 7: View results***
