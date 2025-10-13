@@ -69,7 +69,7 @@ View the first 5 scaffolds:
 
 **LONG READS**
 
-I used *Mycobacterium tuberculosis* with SRR ID SRR35504420:  for sequencing. Its genome size was obtained from the NCBI database and used as a reference parameter during the assembly run. For long-read assembly, two tools are commonly used: `Flye` or `Canu`. I performed the assembly using `Canu`.
+I used *Mycobacterium tuberculosis* with SRR ID SRR35504420 for sequencing. Its genome size was obtained from the NCBI database and used as a reference parameter during the assembly run. For long-read assembly, two tools are commonly used: `Flye` or `Canu`. I performed the assembly using `Canu`.
 
 <pre>mamba create -n canu
 mamba activate canu
