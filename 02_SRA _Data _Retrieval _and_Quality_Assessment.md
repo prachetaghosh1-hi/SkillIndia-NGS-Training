@@ -14,7 +14,7 @@ This file demonstrates how to:
 
 ---
 
-## short-read sequencing data of *Pseudomonas aeruginosa* with SRA ID: SRR35114395.
+## short-read sequencing data of *Acetinobacter baumannii* with SRA ID: SRR35227129.
 ### Step-by-Step Workflow
 
 **Step 1: Set Up Environment**
@@ -26,18 +26,18 @@ This file demonstrates how to:
 
 **Step 2: Make a new directory for the organism**
 
-<pre>mkdir pseudomonas</pre>
-<pre> cd pseudomonas</pre>
+<pre>mkdir acetinobacter</pre>
+<pre> cd acetinobacter</pre>
 
 **Step 3: Identify the SRA ID**
 
 - Go to the **NCBI website** → **SRA database**.  
-- Search for the organism **“Pseudomonas aeruginosa”**.  
-- From the results, choose the appropriate dataset and copy the **SRA ID** (e.g., `SRR35114395`).
+- Search for the organism **“Acetinobacter baumannii”**.  
+- From the results, choose the appropriate dataset and copy the **SRA ID** (e.g., `SRR35227129`).
 
 **Step 4: Download SRA File from NCBI using `prefetch`**
 
-<pre>prefetch SRR35114395</pre>
+<pre>prefetch SRR35227129</pre>
 This will create a folder named SRR35114395 containing the .sra file.
 
 **Step 5: Convert SRA File to FASTQ**
@@ -48,51 +48,56 @@ This will create a folder named SRR35114395 containing the .sra file.
 --Single-end: no need to add `--split-files`.
 
 **For paired-end sequencing**
-<pre>fasterq-dump --split-files SRR35114395/SRR35114395.sra</pre>
+<pre>fasterq-dump --split-files SRR35227129/SRR35227129.sra</pre>
 
 **For single-end sequencing, simply run**
-<pre>fasterq-dump SRR35114395/SRR35114395.sra</pre>
+<pre>fasterq-dump SRR35227129/SRR35227129.sra</pre>
 
 This produces two FASTQ files for paired-end:
 
-SRR35114395_1.fastq (forward reads)
-SRR35114395_2.fastq (reverse reads)
+SRR35227129_1.fastq (forward reads)
+SRR35227129_2.fastq (reverse reads)
 
 For single-end, only one FASTQ file is generated.
 
 **Step 6:  Organize FASTQ Files**
 
-Create a directory `rawdata_pa` to store raw FASTQ files and move them there:
-<pre>mkdir rawdata_pa</pre>
-<pre>mv *.fastq rawdata_pa/</pre>
+Create a directory `rawdata_ab` to store raw FASTQ files and move them there:
+<pre>mkdir rawdata_ab</pre>
+<pre>mv *.fastq rawdata_ab/</pre>
 
 **Step 7:Run FastQC**
 
 Create a directory to store FastQC results:
-<pre>mkdir -p QC_pa</pre>
+<pre>mkdir QC_ab</pre>
 
 Run FastQC on the FASTQ files:
-<pre>fastqc -o QC_pa rawdata_pa/SRR35114395_1.fastq rawdata_pa/SRR35114395_2.fastq </pre>
+<pre>fastqc -o QC_ab rawdata_ab/SRR35227129_1.fastq rawdata_ab/SRR35227129_2.fastq </pre>
 
 
-*Note: Using -o QC_pa ensures FastQC outputs go into the QC_pa directory*
+*Note: Using -o QC_ab ensures FastQC outputs go into the QC_ab directory*
 
 **Step 8: Generate MultiQC Report**
 
 Aggregate all FastQC results into a single report:
-<pre>multiqc QC_pa</pre>
+<pre>multiqc QC_ab</pre>
 
-The report (multiqc_report.html) will be saved in the pseudomonas directory.
+The report (multiqc_report.html) will be saved in the acetinobacter directory.
 
 # Outputs
 
-Raw FASTQ files: `rawdata_pa/`
-FastQC reports: `QC_pa/`
-MultiQC report: `pseudomonas/multiqc_report.html`
+Raw FASTQ files: `rawdata_ab/`
+FastQC reports: `QC_ab/`
+MultiQC report: `acetinobacter/multiqc_report.html`
 
 ---
 
 ## for long reads
+
+organism used : *Mycobacterium tuberculosis* with SRA ID: SRR35504420
+
+similar to short reads, the workflow is similar just the tools for QC check is different
+
 <pre>mamba create -n nanoplot
 mamba activate nanoplot
 mamba install -c bioconda nanoplot -y
