@@ -50,5 +50,20 @@ During this training, I learned and practiced the **entire workflow of Next-Gene
 
 ---
 
+| Step                  | Tool        | Purpose                                           | Notes |
+|-----------------------|------------|--------------------------------------------------|-------|
+| Variant Calling       | BWA        | Align reads to reference genome                 | Generally used for short reads |
+| Variant Calling       | SAMtools   | File conversion, sorting, filtering, and indexing | Works with BAM/SAM files |
+| Variant Calling       | Picard     | Mark duplicate reads                             | Improves accuracy of variant calling |
+| Variant Calling       | FreeBayes  | Perform variant calling                          | Detects SNPs and small indels |
+| Variant Calling       | BCFtools   | Process and count variants                       | Works with VCF/BCF files |
+| Variant Calling       | SnpEff     | Annotation of the variant file                   | Predicts effects of variants |
+| Variant Calling       | Minimap    | Align long reads to reference genome without indexing | Used if long reads are available |
+| Classification        | Kraken2    | Taxonomic classification of reads                | Same tool for short and long reads |
+| Classification        | Krona      | Visualize taxonomic classification              | Generates interactive plots |
+| AMR Detection         | AMRFinder  | Detect antimicrobial resistance genes            | Same tool for short and long reads |
+
+---
+
 This repository serves as a **complete record of my practical learning** during the Skill India training at CSIR-IGIB.  
 
