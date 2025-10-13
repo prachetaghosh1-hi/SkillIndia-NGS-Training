@@ -3,7 +3,6 @@
 *Objective:Compare the genome assembly generated from Pesudomonas aeruginosa SRA file to the reference genome from NCBI using QUAST.*
 
 ---
-
 **Why Use a Reference Genome?**
 
 A reference genome provides a template for evaluating assembly quality.
@@ -30,7 +29,7 @@ cd ref</pre>
 
 ***Step 3: Download Reference Genome***
 
-<pre>datasets download genome accession GCF_XXXXXXX --include genome,protein,gff3</pre>
+<pre>datasets download genome accession GCF_009035845.1 --include genome,protein,gff3</pre>
 
 Files are downloaded as .zip.
 Unzip Reference Genome
@@ -41,7 +40,7 @@ unzip ncbi_dataset.zip</pre>
 
 Locate FASTA File
 Navigate through unzipped folders to locate .fna file. Copy it to the `ref` directory for easy access.
-<pre>cp -r GCF_..fna ../../..</pre>
+<pre>cp -r GCF_009035845.fna ../../..</pre>
 
 ***Step 4 : Quast run***
 Activate QUAST Environment
@@ -50,7 +49,7 @@ Activate QUAST Environment
 Run QUAST Analysis
 Compare reference genome with assembly outputs:
 
-<pre>quast.py -r ref/GCF_..fna -o quast_results contigs.fasta scaffolds.fasta</pre>
+<pre>quast.py -r ref/GCF_009035845.fna -o quast_results contigs.fasta scaffolds.fasta</pre>
 
 
 # *Outcome:*
