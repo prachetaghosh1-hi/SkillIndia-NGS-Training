@@ -328,4 +328,82 @@ In this section, we annotated the variants detected in the Staphylococcus aureus
 This step enriches the variant list with biological context — identifying the gene affected, its location, and the predicted impact of each mutation.
 
 
+---
+
+
+## 🧾 RESULTS
+
+### **1. Alignment and Sorting**
+
+After converting the SAM file to a **sorted BAM**, the **percentage of properly paired reads** increased from **90.86% to 98.41%**.  
+This improvement occurs because **coordinate sorting** groups mate pairs together, enabling tools such as `samtools flagstat` to correctly recognize properly paired reads.  
+
+It was also observed that the **number of primary mapped reads** became **100%** after the **filtering step**.  
+This is due to the use of the `-F 4` parameter in `samtools view`, which removes all unmapped reads.  
+
+🧩 **Interpretation:**  
+In BAM/SAM files, each read can have multiple alignments — primary, secondary, or supplementary.  
+A **primary alignment** represents the best, main location for that read, which is expected after proper filtering and sorting.
+
+---
+
+### **2. Duplicate Marking (Picard Metrics)**
+
+Using **Picard MarkDuplicates**, duplicate reads generated during PCR amplification were identified.  
+The **metrics.txt** summary reported a **duplication rate of 0.095163**, indicating that approximately **9.5% of the reads** were duplicates.  
+
+The remaining **90.5% unique reads** were retained for variant calling.  
+Removing duplicate reads is crucial to prevent **false-positive SNPs**, which can arise from PCR amplification artifacts.
+
+---
+
+### **3. Variant Detection (FreeBayes)**
+
+Variants were detected using **FreeBayes**, which compared the aligned reads (`markdup.bam`) to the reference genome in small chunks (100 kb windows).  
+The resulting `variants.vcf` file listed all variant sites found in the sample.  
+
+🧠 **Note:**  
+When viewing the file (`nano variants.vcf`), we can see the variant positions and reference/alternate alleles.  
+However, this raw variant file does **not** include biological information about affected genes or mutation effects.
+
+---
+
+### **4. Total Variants Identified**
+
+A total of **45,503 variant sites** were detected in the *Staphylococcus aureus* sample (**SRR35532843**).  
+
+📊 **Interpretation:**  
+A higher number of variants indicates that the sample genome differs significantly from the reference genome at many positions, suggesting possible strain-specific mutations or evolutionary divergence.
+
+---
+
+### **5. Variant Annotation (snpEff)**
+
+Annotation was performed using **snpEff**, which interprets the biological meaning of each variant.  
+It identifies whether variants occur within **protein-coding genes**, and specifies the **gene name**, **functional impact**, and **mutation type**.  
+
+🧬 **Example Interpretation:**  
+A variant located on **NC_00795.1 at position 137** showed a change from **A (reference)** to **G (sample)**.  
+The annotation revealed that this variant is part of a **protein-coding gene (dnaA region)**, located at the **380th base position**, and classified as a **modifier variant**.  
+
+Thus, snpEff provides insights into the functional context of each variant beyond simple positional data.
+
+---
+
+### **6. Variant Type Summary**
+
+Among the total **45,503 variants**, snpEff reported:
+
+- **37,452 SNPs (Single Nucleotide Polymorphisms)**  
+- **589 Indels (Insertions and Deletions)**  
+
+This distribution reflects that most genomic differences between the sample and reference are single-base substitutions.
+
+---
+
+### **7. Filtered Variant Results (Optional Step)**
+
+Variant filtration was optional in this workflow, as the mapping percentage was **92.33%** (above the 70% threshold).  
+However, for demonstration, filtration was performed to retain only high-confidence SNPs based on depth (`DP > 10`) and genotype quality (`GQ > 20`).
+
 
