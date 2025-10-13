@@ -92,6 +92,12 @@ MultiQC report: `pseudomonas/multiqc_report.html`
 
 ---
 
+## for long reads
+<pre>mamba create -n nanoplot
+mamba activate nanoplot
+mamba install -c bioconda nanoplot -y
+mkdir QC
+NanoPlot -t 2 -o QC –fastq SRR35504420.fastq</pre>
 
 
 
