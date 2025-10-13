@@ -166,3 +166,166 @@ Starting from the indexed reference genome and trimmed FASTQ files, the process 
 
 ---
 
+## 🧬 VARIANT ANNOTATION USING snpEff
+
+Once we have our variant file (`variants.vcf`), the next step is to **annotate** these variants to understand their biological significance — which genes they affect, whether they cause synonymous or nonsynonymous mutations, and where they occur in the genome.
+
+We use **snpEff** (version: `snpEff_v4_3t_core`) for this purpose.  
+snpEff uses a reference genome and its corresponding GFF annotation file to predict the effect of each variant.
+
+---
+
+***Step 12: Download snpEff***
+
+Download snpEff (version: `snpEff_v4_3t_core`) from Google and move it to the working directory, `variant_calling`
+<pre>mv /mnt/c/Users/Lenovo/Downloads/snpEff_v4_3t_core.zip </pre>
+
+Activate the environment having sudo tool and unzip the file obtained from snpEff.
+<pre> unzip snpEff_v4_3t_core.zip</pre>
+
+Make several directories at once `variant_calling` --> `snpEff` --> `data` --> `staph`
+<pre>cd snpEff
+mkdir data
+cd data
+mkdir staph
+cd staph</pre>
+
+### 📝 Explanation:
+We created a folder structure inside snpEff/data/ for the organism (Staphylococcus aureus) that will hold genome sequence (.fna) and annotation (.gff3) files.
+
+***Step 13: Download Reference Files for Annotation***
+
+We need both:
+
+1. The genome sequence file (.fna)
+
+2. The annotation file (.gff3)
+
+Download them again using NCBI Datasets(don't forget to activate the environment hwere this toolis present):
+<pre> datasets download genome accession GCF_000013425.1 --include genome,gff3
+unzip ncbi_dataset.zip</pre>
+
+since this reference fille is too far so , move this ref file to the `variant_calling` directory:
+<pre>mv ncbi_dataset/data/GCF_000013425.1/* .</pre>
+
+
+***Step 14: Rename Files for snpEff Compatibility***
+
+snpEff requires standardized filenames to recognize genome and feature files properly.
+
+<pre>mv GCF_000013425.1_ASM1342v1_genomic.fna sequences.fa
+mv genomic.gff genes.gff3</pre>
+
+  
+### 📝 Explanation:
+
+sequences.fa → the full genomic sequence (FASTA format)
+
+genes.gff3 → gene annotation file describing genomic features (genes, exons, UTRs, etc.)
+
+***Step 15: Configure snpEff***
+
+snpEff uses a configuration file (snpEff.config) to locate available genomes and their data directories.
+Since the configuration file is present 2 directories back in `snpEff` directory
+<pre> cd ../../</pre>
+
+Open the file and add a new entry:
+*very important step*
+<pre>nano snpEff.config</pre>
+
+Scroll to the end (or anywhere safe in the file) and add:-  staph.genome : staph
+
+### 📝 Explanation:
+
+staph.genome → ID of the genome.
+
+staph → directory name under snpEff/data/ that contains sequences.fa and genes.gff3.
+
+⚠️ Important: Do not delete or modify any existing entries in snpEff.config.
+
+***Step 16: Build snpEff Database***
+
+Now we build the annotation database for Staphylococcus aureus using the provided GFF3 file.
+
+<pre>java -jar snpEff.jar build staph -gff3</pre>
+
+### 📝 Explanation:
+This step parses genes.gff3 and sequences.fa, creating a local snpEff database for annotation.
+
+***Step 17: Perform Variant Annotation***
+
+Annotate the variants from the VCF file generated in the previous steps.
+<pre>java -jar snpEff.jar ann staph ../variants.vcf > variants.ann.vcf</pre>
+
+You can open the annotated VCF file to inspect the added information:
+<pre> nano variants.ann.vcf </pre>
+
+🧩 Compression and Indexing of Annotated File:
+<pre>bgzip variants.ann.vcf
+
+gunzip variants.ann.vcf.gz</pre>
+
+### Explanation:
+
+bgzip → compresses the VCF file.
+
+tabix → creates an index for fast retrieval.
+
+gunzip → decompresses when needed for manual inspection.
+
+***Step 18: Count SNPs and Indels in Annotated File***
+
+Count the total number of SNPs and indels detected in the annotated variant file.
+
+<pre>bcftools view -v snps variants.ann.vcf | grep -v "^#" | wc -l
+bcftools view -v indels variants.ann.vcf | grep -v "^#" | wc -l</pre>
+
+### 📝 Explanation:
+
+The first command counts all SNPs (single nucleotide polymorphisms).
+
+The second command counts all indels (insertions/deletions).
+
+***Step 19: Optional – Filtration of Annotated Variants***
+
+Variant filtration is optional and is generally performed when the mapping percentage is below 70%.
+In our case, the mapping percentage was 92.33%, so filtration is not mandatory — but shown here for reference.
+
+<pre>bcftools filter -i 'TYPE="snp" && (FMT/DP)>10 && (FMT/GQ)>20' --threads 10 -o filtered.vcf.gz variants.ann.vcf.gz
+bcftools filter -i 'TYPE="snp"' --threads 4 -o filtered.vcf.gz variants.ann.vcf.gz
+gunzip filtered.vcf.gz
+nano filtered.vcf</pre>
+
+### 📝 Explanation:
+
+Filters variants based on read depth (DP) and genotype quality (GQ).
+
+Produces a new filtered VCF file (filtered.vcf).
+
+***Step 20: Count SNPs and Indels in Filtered File***
+
+If filtration was performed, count the number of SNPs and indels again.
+
+<pre>bcftools view -v snps filtered.vcf.gz | grep -v '^#' | wc -l
+bcftools view -v indels filtered.vcf.gz | grep -v '^#' | wc -l</pre>
+
+### 📝 Explanation:
+This provides counts for high-quality SNPs and indels after filtering.
+
+**📊 Final Outputs in variant_calling/**
+|File	| Description |
+|-----|----|
+|variants.vcf |	Raw variants identified by FreeBayes |
+| variants.ann.vcf | Annotated variants after snpEff |
+| filtered.vcf	(Optional) | Filtered variants based on quality metrics |
+| sequences.fa |	Reference genome sequence (renamed) |
+| genes.gff3 | Gene annotation file for snpEff |
+| snpEff.config |	Configuration file with genome path |
+| metrics.txt |	Picard duplicate read summary |
+
+**✅ Summary**
+In this section, we annotated the variants detected in the Staphylococcus aureus sample (SRR35532843) using snpEff.
+This step enriches the variant list with biological context — identifying the gene affected, its location, and the predicted impact of each mutation.
+
+
+
