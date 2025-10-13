@@ -10,6 +10,8 @@ We use **SPAdes** for assembly, **QUAST** for evaluation, and **SeqKit** for seq
 
 ---
 
+**SHORT READS**
+
 ***Step1: Installation of SPAdes in new environment called `spades`***
 <pre>mamba create -n spades
 mamba activate spades
@@ -64,4 +66,14 @@ View the first 5 scaffolds:
 4. SeqKit summaries: printed in terminal or saved to file
 
 ---
+
+**LONG READS**
+
+I used *Mycobacterium tuberculosis* for sequencing. Its genome size was obtained from the NCBI database and used as a reference parameter during the assembly run. For long-read assembly, two tools are commonly used: `Flye` or `Canu`. I performed the assembly using `Canu`.
+
+<pre>mamba create -n canu
+mamba activate canu
+mamba install -c bioconda canu -y
+canu -assemble -d canu -p m_tuberculosis -trimmed -nanopore SRR.filtered.fastq.gz -genomeSize=4.4m</pre>
+Do quast
 
