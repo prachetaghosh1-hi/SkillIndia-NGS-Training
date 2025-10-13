@@ -12,7 +12,7 @@ This ensures that subsequent analyses (like mapping, assembly, or variant callin
 
 **Note:**  
 - For **short-read sequencing data** (Illumina), trimming can be done using **Trim Galore** or **fastp**. In this workflow, **fastp** is used.  
-- For **long-read sequencing data** (Nanopore), trimming is typically done with **Porechop**.
+- For **long-read sequencing data** (Nanopore), trimming is typically done with **Porechop** and QC for trimmed files is done with **NanoFilt**.
 
 ---
 
@@ -67,3 +67,22 @@ multiqc QC_trim_pa</pre>
 ***output:*** The MultiQC report summarizes the quality improvements after trimming.
 
 ---
+
+# LONG READS
+
+<pre> mamba create -n porechop
+mamba activate porechop
+mamba install -c bioconda porechop=0.2.4
+porechop -i SRR.fastq -o  SRR.._trimmed.fastq --format fastq -t 2 –discard_middle
+mamba deactivate
+mamba create -n nanofilt
+mamba install -c bioconda nanofilt -y
+mamba activate nanofilt
+cat SRR_trimmed.fastq | NanoFilt -l 500 -q 12  > SRR.filtered.fastq</pre>
+
+---
+
+*The only difference I observed in the trimming step of short and long reads is that in long reads only the middle adapters are discarded and long reads trimming takes alot of time.*
+
+---
+
