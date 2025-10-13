@@ -31,8 +31,8 @@ During this training, I learned and practiced the **entire workflow of Next-Gene
 
 - **Short-read workflows** were completed fully, including QC, trimming, assembly, annotation, variant calling, AMR detection, and classification.  
 - **Long-read workflows** were completed up to assembly due to hardware limitations.  
-- All steps are reproducible using the **example data links** provided in the respective folders.  
-- Each folder contains a **README.md** with detailed commands, notes, and references to data.  
+
+
 
 ---
 
