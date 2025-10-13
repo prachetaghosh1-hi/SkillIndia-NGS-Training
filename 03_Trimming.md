@@ -22,7 +22,7 @@ This ensures that subsequent analyses (like mapping, assembly, or variant callin
 ---
 
 
-## for SHORT READS
+## SHORT READS
 **Step 1: Create Environment and Install fastp**
 
 - Create a new conda environment called `trimenv` and install **fastp**:
@@ -73,7 +73,7 @@ multiqc QC_trim_ab</pre>
 
 ---
 
-# LONG READS
+## LONG READS
 
 organism used : *Mycobacterium tuberculosis* with SRA ID:SRR35504420 , Layout : Single
 
