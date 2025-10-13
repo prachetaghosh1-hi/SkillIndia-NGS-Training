@@ -75,12 +75,14 @@ multiqc QC_trim_ab</pre>
 
 # LONG READS
 
-organism used : *Mycobacterium tuberculosis* with SRA ID: 
+organism used : *Mycobacterium tuberculosis* with SRA ID:SRR35504420 , Layout : Single
+
+similar to short reads, the workflow is similar just the tools for trimming and its QC check is different
 
 <pre> mamba create -n porechop
 mamba activate porechop
 mamba install -c bioconda porechop=0.2.4
-porechop -i SRR.fastq -o  SRR.._trimmed.fastq --format fastq -t 2 –discard_middle
+porechop -i SRR.fastq -o  SRR35504420_trimmed.fastq --format fastq -t 2 –discard_middle
 mamba deactivate
 mamba create -n nanofilt
 mamba install -c bioconda nanofilt -y
