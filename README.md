@@ -13,13 +13,17 @@ During this training, I learned and practiced the **entire workflow of Next-Gene
 
 | Step | Folder | Description |
 |------|--------|-------------|
-| 1 | `01_Linux_Basics` | Basic Linux commands and environment setup |
-| 2 | `02_QC_and_Trimming` | Quality check and trimming of sequencing reads |
-| 3 | `03_Assembly` | Genome assembly for short and long reads |
-| 4 | `04_Annotation` | Genome annotation using Prokka |
-| 5 | `06_AMR_Detection` | Antimicrobial resistance gene detection |
-| 6 | `05_Variant_Calling` | Variant detection using reference genome |
-| 7 | `07_Classification` | Genome classification and taxonomy analysis |
+| 1 | `01_Linux_basics.md` | Basic Linux commands and environment setup |
+| 2 | `02_SRA_Data_Retrieval_and_Quality_Assessment.md` | SRA file download from NCBI (organism you wish to work on) Quality check for short and long reads |
+| 3 | `03_Trimming.md` | trimming of sequencing reads for short and long reads  |
+| 4 | `04_Assembly.md` | Genome assembly for short and long readsGenome annotation using Prokka |
+| 5 | `05_Comparing_Genome_Assembly_to_Reference_Genome.md` | reference file needed for scaffolding and assembly |
+| 6 | `06_scaffolding.md`  
+| 7 | `07_Annotation.md` | see the biological significance of your organism |
+| 8 | `08_AMR_Detection.md` 
+| 9 | `09_Variant_calling.md` | Variant detection using reference genome |
+| 10 | `10_Classification.md` | Genome classification and taxonomy analysis |
+
 
 ---
 
