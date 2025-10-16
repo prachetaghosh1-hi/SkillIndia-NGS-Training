@@ -55,6 +55,7 @@ After assembly, *multiple contigs need to be arranged into a correct order and o
 Since we do not know the exact order of sequencer reads, *scaffolding often uses a reference genome or paired-end read information to guide contig ordering*
 
 Once a single, ordered stretch of DNA is created through scaffolding, the sequence can be annotated easily to identify genes, regulatory regions, and other genomic features, such as antimicrobial resistance (AMR) genes.
+
 ---
 
 - **Short-read workflows** were completed fully, including QC, trimming, assembly, annotation, variant calling, AMR detection, and classification.  
