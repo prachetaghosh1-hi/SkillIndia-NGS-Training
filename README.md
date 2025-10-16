@@ -35,21 +35,6 @@ The main goal of this analysis is to obtain biological information about a parti
 
 A FASTQ file contains millions of short DNA sequences (reads), each separated by a header line starting with @. Each read entry has four lines:
 
-@Read_ID
-
-ACGTAGCTAGCTAGCTAGCTAGCTAGCTAGC
-
-+
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-
-Line 1: Header starting with @ (read identifier)
-
-Line 2: Nucleotide sequence (A, T, G, C)
-
-Line 3: A plus sign (+), sometimes followed by the header again
-
-Line 4: Quality scores for each nucleotide
 
 However, a FASTQ file by itself cannot directly give us the information we need because these short reads are randomly arranged in the file. This randomness happens because:
 
@@ -65,21 +50,6 @@ Before assembly, the reads are trimmed to remove adapters and low-quality bases.
 
 During the assembly step, the trimmed short reads are aligned based on overlapping regions and merged to form contigs — longer continuous sequences representing stretches of the original genome.
 
-Read 1: ATGCGTACCTGATCGATCGGATCGTACGTA
-
-                 ||||||||||||||||||||||
-                 
-Read 2:          CGATCGGATCGTACGTAGCTAGCTGATCGA
-
-                          ||||||||||||||||||||||
-                          
-Read 3:                   GTACGTAGCTAGCTGATCGATCGTGGATCG
-
-
-
->contig_1
-
-ATGCGTACCTGATCGATCGGATCGTACGTAGCTAGCTGATCGATCGTGGATCG
 
 
 Not all reads overlap perfectly, so usually multiple contigs are generated rather than a single continuous sequence. Contigs are the foundation for further steps such as scaffolding and annotation, which allow us to identify genes and other genomic features, including AMR (antimicrobial resistance) genes.
