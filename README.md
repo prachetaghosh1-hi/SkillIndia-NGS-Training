@@ -50,6 +50,20 @@ Before assembly, the reads are *trimmed* to remove adapters and low-quality base
 
 Not all reads overlap perfectly, so usually multiple contigs are generated rather than a single continuous sequence. 
 
+After assembly, we usually obtain multiple contigs of different lengths. While we can see the total number of contigs and their sizes, it’s hard to judge by eye whether most of the genome is in long continuous stretches or fragmented into short contigs.
+
+This is where N50 becomes useful (seen by QUAST run).
+
+What N50 Tells Us--
+
+N50 is the contig length such that 50% of the total assembly is contained in contigs of this length or longer.
+
+In simple terms, it gives a typical contig size representing the bulk of your genome.
+
+1. Higher N50 → better assembly continuity → longer contigs → easier annotation and scaffolding.
+
+2. Lower N50 → fragmented assembly → harder to analyze.
+
 After assembly, *multiple contigs need to be arranged into a correct order and orientation to represent the full genome as accurately as possible. This process is called scaffolding*.
 
 Since we do not know the exact order of sequencer reads, *scaffolding often uses a reference genome or paired-end read information to guide contig ordering*
