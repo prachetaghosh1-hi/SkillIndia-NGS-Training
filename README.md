@@ -48,7 +48,7 @@ Before assembly, the reads are *trimmed* to remove adapters and low-quality base
 
 *During the assembly step, the trimmed short reads are aligned based on overlapping regions and merged to form contigs — longer continuous sequences representing stretches of the original genome*
 
-Not all reads overlap perfectly, so usually multiple contigs are generated rather than a single continuous sequence. Contigs are the foundation for further steps such as scaffolding and annotation, which allow us to identify genes and other genomic features, including AMR (antimicrobial resistance) genes.
+Not all reads overlap perfectly, so usually multiple contigs are generated rather than a single continuous sequence. 
 
 After assembly, *multiple contigs need to be arranged into a correct order and orientation to represent the full genome as accurately as possible. This process is called scaffolding*.
 
