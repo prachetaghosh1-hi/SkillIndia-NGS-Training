@@ -44,16 +44,17 @@ However, a FASTQ file by itself cannot directly give us the information we need 
 
 As a result, the FASTQ file contains short, non-sequential DNA fragments that must be assembled into longer stretches before any meaningful analysis, such as gene annotation, can be performed.
 
-**Assembly: From FASTQ Reads to Contigs**
+Before assembly, the reads are *trimmed* to remove adapters and low-quality bases. This ensures that only high-quality sequences are used for downstream analysis.
 
-Before assembly, the reads are trimmed to remove adapters and low-quality bases. This ensures that only high-quality sequences are used for downstream analysis.
-
-During the assembly step, the trimmed short reads are aligned based on overlapping regions and merged to form contigs — longer continuous sequences representing stretches of the original genome.
-
-
+*During the assembly step, the trimmed short reads are aligned based on overlapping regions and merged to form contigs — longer continuous sequences representing stretches of the original genome*
 
 Not all reads overlap perfectly, so usually multiple contigs are generated rather than a single continuous sequence. Contigs are the foundation for further steps such as scaffolding and annotation, which allow us to identify genes and other genomic features, including AMR (antimicrobial resistance) genes.
 
+After assembly, *multiple contigs need to be arranged into a correct order and orientation to represent the full genome as accurately as possible. This process is called scaffolding*.
+
+Since we do not know the exact order of sequencer reads, *scaffolding often uses a reference genome or paired-end read information to guide contig ordering*
+
+Once a single, ordered stretch of DNA is created through scaffolding, the sequence can be annotated easily to identify genes, regulatory regions, and other genomic features, such as antimicrobial resistance (AMR) genes.
 ---
 
 - **Short-read workflows** were completed fully, including QC, trimming, assembly, annotation, variant calling, AMR detection, and classification.  
