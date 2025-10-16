@@ -36,8 +36,11 @@ The main goal of this analysis is to obtain biological information about a parti
 A FASTQ file contains millions of short DNA sequences (reads), each separated by a header line starting with @. Each read entry has four lines:
 
 @Read_ID
+
 ACGTAGCTAGCTAGCTAGCTAGCTAGCTAGC
+
 +
+
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 Line 1: Header starting with @ (read identifier)
@@ -63,12 +66,19 @@ Before assembly, the reads are trimmed to remove adapters and low-quality bases.
 During the assembly step, the trimmed short reads are aligned based on overlapping regions and merged to form contigs — longer continuous sequences representing stretches of the original genome.
 
 Read 1: ATGCGTACCTGATCGATCGGATCGTACGTA
+
                  ||||||||||||||||||||||
+                 
 Read 2:          CGATCGGATCGTACGTAGCTAGCTGATCGA
+
                           ||||||||||||||||||||||
+                          
 Read 3:                   GTACGTAGCTAGCTGATCGATCGTGGATCG
 
+
+
 >contig_1
+
 ATGCGTACCTGATCGATCGGATCGTACGTAGCTAGCTGATCGATCGTGGATCG
 
 
